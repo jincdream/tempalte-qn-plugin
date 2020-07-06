@@ -1,0 +1,5 @@
+<plugin-a context="{{
+  loginUser: {
+    nick: 'test'
+  }
+}}"></plugin-a>

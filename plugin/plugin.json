@@ -1,0 +1,6 @@
+{
+  "publicComponents": {
+    "plugin-a": "output/myPluginA/myPluginA"
+  },
+  "main": "bridge"
+}

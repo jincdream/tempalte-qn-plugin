@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "action-core": "^0.2.3",
+    "tslib": "^2.0.0"
+  }
+}
