@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "action-core": "^0.2.3",
+    "mii-open-api": "^0.1.1",
     "tslib": "^2.0.0"
   }
 }

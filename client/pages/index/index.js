@@ -1,36 +1,15 @@
+import {OpenAPI} from 'mii-open-api'
 var plugin = requirePlugin("myPlugin");
-import ActionCore from "action-core"
-
-class OpenAPI extends ActionCore {
-  constructor(bizCode, apis) {
-    super()
-    this.install("openAPI", async function ({ data, target }) {
-      let fn = apis[target] || async function (args) { console.log(args); return { success: true } }
-      return await fn(data)
-    })
-    this.bizCode = bizCode
-    return new Proxy({}, {
-      set: () => false,
-      defineProperty: () => false,
-      getPrototypeOf: () => false,
-      setPrototypeOf: () => false,
-      deleteProperty: () => false,
-      apply: () => false,
-      get: (obj, props) => {
-        return async (data) => {
-          console.log(obj, props, data)
-          return await this.run({
-            type: "openAPI",
-            target: props,
-            bizCode,
-            data
-          })
-        }
-      }
-    })
+let openAPIs = new OpenAPI("myPlugin",{
+  getUser: async()=>{
+    return {nick: "jinc"}
+  },
+  getData: async()=>{
+    return {data: 123}
   }
-}
-plugin.setBridge(new OpenAPI(plugin.code))
+})
+plugin.setBridge(openAPIs.get())
+
 Page({
   onLoad(query) {
     // 页面加载
