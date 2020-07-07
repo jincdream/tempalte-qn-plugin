@@ -1,13 +1,18 @@
-import {OpenAPI} from 'mii-open-api'
-var plugin = requirePlugin("myPlugin");
-let openAPIs = new OpenAPI("myPlugin",{
-  getUser: async()=>{
-    return {nick: "jinc"}
+/**
+ * 容器API注入
+ */
+import { OpenAPI } from 'mii-open-api'
+const plugin = requirePlugin("myPlugin")
+// 不可更改的 api 对象
+let openAPIs = new OpenAPI("myPlugin", {
+  getUser: async () => {
+    return { nick: "jinc" }
   },
-  getData: async()=>{
-    return {data: 123}
+  getData: async () => {
+    return { data: 123 }
   }
 })
+// 注入
 plugin.setBridge(openAPIs.get())
 
 Page({
