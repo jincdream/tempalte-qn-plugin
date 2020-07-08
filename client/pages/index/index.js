@@ -5,15 +5,32 @@ import { OpenAPI } from 'mii-open-api'
 const plugin = requirePlugin("myPlugin")
 // 不可更改的 api 对象
 let openAPIs = new OpenAPI("myPlugin", {
-  getUser: async () => {
-    return { nick: "jinc" }
+  sendCard: async (params) => {
+    console.info("sendCard:",params)
+    return { success: true }
   },
-  getData: async () => {
-    return { data: 123 }
+  openChat: async (params) => {
+    console.info("openChat:",params)
+    return { success: true }
   }
 })
 // 注入
 plugin.setBridge(openAPIs.get())
+
+// 服务设置
+plugin.server.onPost({
+  path: "/test/post"
+}, async (body)=>{
+  console.log("post:",{body})
+  my.alert({content: `容器接受到数据: ${JSON.stringify({body})}`})
+})
+
+plugin.server.onGet({
+  path: "/test/get"
+}, async (data)=>{
+  console.log("get:",{data})
+  return Date.now()
+})
 
 Page({
   onLoad(query) {
