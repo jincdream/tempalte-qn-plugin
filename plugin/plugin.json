@@ -1,6 +1,6 @@
 {
   "publicComponents": {
-    "plugin-a": "output/myPluginA/myPluginA"
+    "index": "output/myPluginA/myPluginA"
   },
   "main": "bridge"
 }
