@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "plugin-a": "plugin://myPlugin/plugin-a"
+    "plugin-a": "plugin://myPlugin/index"
   }
 }
