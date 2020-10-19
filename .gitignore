@@ -3,6 +3,7 @@
 .tea
 .DS_Store
 .cache
+yarn.lock
 node_modules
 
 coverage
